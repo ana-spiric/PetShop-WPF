@@ -1,0 +1,202 @@
+﻿<Window x:Class="Pet_Shop_HCI.User"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:local="clr-namespace:Pet_Shop_HCI"
+        mc:Ignorable="d"
+        Title="User" Height="700" Width="1300"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Border CornerRadius="10"
+            BorderThickness="3" BorderBrush="{DynamicResource BigBorderBrush}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <!--Navigation menu-->
+                <ColumnDefinition Width="250"/>
+                <!--Content section-->
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border CornerRadius="9,0,0,9"
+                    Grid.Column="0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
+                        <GradientStop Color="{DynamicResource secondaryBackColor1}" Offset="0"/>
+                        <GradientStop Color="{DynamicResource secondaryBackColor2}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel>
+
+                    <!--Logo-->
+                    <StackPanel Orientation="Horizontal"
+                                Height="35"
+                                Margin="15,25,0,40">
+                        <Image Source="/images/cat-food.png" Height="30"/>
+                        <TextBlock Text="ŠAPICA"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="20"
+                                   FontFamily="Montserrat"
+                                   FontWeight="Medium"
+                                   VerticalAlignment="Center"
+                                   Margin="10,0,0,0"/>
+
+                    </StackPanel>
+
+                    <!--Menu buttons-->
+                    <RadioButton Style="{DynamicResource menuButton}"
+                                 Tag="{DynamicResource color1}"
+                                 Checked="PregledProizvodaButton_Checked"
+                                 x:Name="PregledProizvodaButton">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="ListOl" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Pregled proizvoda" Style="{StaticResource menuButtonText}" Name="ListProizvodi"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Style="{DynamicResource menuButton}"
+                                 Tag="{DynamicResource color1}"
+                                 Checked="ProdajaButton_Checked"
+                                 x:Name="ProdajaButton">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Receipt" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Prodaja" Style="{StaticResource menuButtonText}" Name="Prodaja"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Style="{DynamicResource menuButton}"
+                                 Tag="{DynamicResource color1}"
+                                 Checked="ButtonLogOut_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="SignOut" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Odjava" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+                    
+                    
+                </StackPanel>
+            </Border>
+
+            <!--Main section-->
+            <Border CornerRadius="0,9,9,0"
+                    Grid.Column="1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                        <GradientStop Color="{DynamicResource primaryBackColor1}" Offset="0"/>
+                        <GradientStop Color="{DynamicResource primaryBackColor2}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            
+                
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel x:Name="pnlControlBar"
+                                Grid.Row="0"
+                                Orientation="Horizontal"
+                                FlowDirection="RightToLeft"
+                                Background="Transparent"
+                                Margin="0,0,5,0"
+                                MouseLeftButtonDown="pnlControlBar_MouseLeftButtonDown"
+                                MouseEnter="pnlControlBar_MouseEnter">
+                        <Button x:Name="btnClose"
+                                Style="{StaticResource controlButton}"
+                                Tag="{StaticResource color4}"
+                                Click="btnClose_Click">
+                            <fa:IconImage Icon="Xmark" Style="{StaticResource controlButtonIcon}"/>
+                        </Button>
+
+                        <Button x:Name="btnMaximize"
+                                Style="{StaticResource controlButton}"
+                                Tag="{StaticResource color6}"
+                                Click="btnMaximize_Click">
+                            <fa:IconImage Icon="Square" Style="{StaticResource controlButtonIcon}"/>
+                        </Button>
+
+                        <Button x:Name="btnMinimize"
+                                Style="{StaticResource controlButton}"
+                                Tag="{StaticResource color8}"
+                                Click="btnMinimize_Click" >
+                            <fa:IconImage Icon="WindowMinimize" Width="12" Style="{StaticResource controlButtonIcon}"/>
+                        </Button>
+
+                    </StackPanel>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center">
+                            <fa:IconImage x:Name="IconContent"
+                                          Height="20"
+                                          Width="20"
+                                          Foreground="{StaticResource titleColor2}"
+                                          Margin="35,0,10,0"/>
+                            <TextBlock x:Name="CaptionContent"
+                                       Foreground="{StaticResource titleColor2}"
+                                       FontSize="16"
+                                       FontFamily="Montserrat"
+                                       FontWeight="Medium"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="70"/>
+                            </Grid.ColumnDefinitions>
+                                <TextBlock Text="Tema"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           FontSize="12" FontWeight="Medium" FontFamily="Montserrat"
+                                           Foreground="{StaticResource titleColor2}"/>
+                                <ComboBox x:Name="TemaSelektor"
+                                          Grid.Column="1"
+                                          VerticalAlignment="Center" HorizontalAlignment="Center"
+                                          SelectionChanged="TemaSelektor_SelectionChanged"
+                                          Margin="10,0,15,0">
+                                <ComboBoxItem Tag="ZelenaTema">
+                                    <Ellipse Width="15" Height="15"
+                                                 Fill="#478C5C"
+                                                 Stroke="{StaticResource plainTextColor1}"
+                                                 StrokeThickness="1"/>
+                                </ComboBoxItem>
+                                <ComboBoxItem Tag="PlavaTema">
+                                    <Ellipse Width="15" Height="15"
+                                                 Fill="#003262"
+                                                 Stroke="{StaticResource plainTextColor1}"
+                                                 StrokeThickness="1"/>
+                                </ComboBoxItem>
+                                <ComboBoxItem Tag="LjubicastaTema">
+                                    <Ellipse Width="15" Height="15"
+                                                 Fill="#301934"
+                                                 Stroke="{StaticResource plainTextColor1}"
+                                                 StrokeThickness="1"/>
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </Grid>
+                    </Grid>
+
+                    <!--view-->
+
+                    <ContentControl x:Name="ContentControlMain"
+                                    Grid.Row="2"
+                                    Margin="25"/>
+
+                </Grid>
+            </Border>
+
+        </Grid>
+    </Border>
+</Window>

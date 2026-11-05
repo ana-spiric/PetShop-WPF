@@ -1,0 +1,112 @@
+﻿<Window x:Class="Pet_Shop_HCI.views.DodajRadnikaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pet_Shop_HCI.views" xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp" xmlns:classes="clr-namespace:Pet_Shop_HCI.classes" d:DataContext="{d:DesignInstance Type=classes:PregledProizvoda}"
+        mc:Ignorable="d"
+        Height="560" Width="400"
+        Background="Transparent"
+        AllowsTransparency="True" WindowStyle="None"
+        ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CornerRadius="7" />
+    </WindowChrome.WindowChrome>
+
+    <Border CornerRadius="7" BorderThickness="1.5" BorderBrush="{DynamicResource color1}"
+            Background="{DynamicResource newWindowColor}">
+
+        <Grid Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="38"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0">
+                <Button x:Name="btnClose"
+                                Style="{StaticResource controlButton1}"
+                                Tag="{StaticResource color4}"
+                                Click="btnClose_Click"
+                                Height="20">
+                    <fa:IconImage Icon="Xmark" Style="{StaticResource controlButtonIcon}"/>
+                </Button>
+            </StackPanel>
+
+            <TextBlock Text="Dodavanje radnika"
+                       FontSize="16" FontWeight="Medium"
+                       Foreground="{DynamicResource color1}"
+                       FontFamily="Montserrat"
+                       HorizontalAlignment="Center" Margin="0,0,0,20" 
+                       Grid.Row="1"/>
+
+            <StackPanel Grid.Row="2" HorizontalAlignment="Center">
+                <StackPanel Margin="0,10">
+                    <TextBlock Text="Matični broj:"
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                    <TextBox x:Name="JMBTextBox" 
+                             Style="{StaticResource TextBoxStyle}"
+                             PreviewTextInput="TextBox_PreviewTextInput"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,10">
+                    <TextBlock Text="Ime:" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                    <TextBox x:Name="ImeTextBox"
+                             Style="{StaticResource TextBoxStyle}"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,10">
+                    <TextBlock Text="Prezime:" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                    <TextBox x:Name="PrezimeTextBox"
+                             Style="{StaticResource TextBoxStyle}"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,10">
+                    <CheckBox x:Name="AdminCheckBox" Content="Administrator" 
+                              FontWeight="Medium" 
+                              FontFamily="Montserrat"
+                              VerticalAlignment="Center" HorizontalAlignment="Left"
+                              Foreground="{DynamicResource color1}"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,10">
+                    <CheckBox x:Name="AktivanCheckBox" Content="Status" 
+                              FontWeight="Medium" 
+                              FontFamily="Montserrat"
+                              VerticalAlignment="Center" HorizontalAlignment="Left"
+                              Foreground="{DynamicResource color1}"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,10">
+                    <TextBlock Text="Korisničko ime:" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                    <TextBox x:Name="UsernameTextBox"
+                             Style="{StaticResource TextBoxStyle}"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,10">
+                    <TextBlock Text="Lozinka:" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                    <TextBox x:Name="PasswordTextBox"
+                             Style="{StaticResource TextBoxStyle}"/>
+                </StackPanel>
+
+                <Button Content="Sačuvaj"
+                        Width="70" Height="30"
+                        Margin="0,20,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Style="{DynamicResource dodajRadnikaButton}"
+                        Click="SacuvajRadnikaButton_Click" />
+            </StackPanel>
+
+        </Grid>
+    </Border>
+   
+</Window>

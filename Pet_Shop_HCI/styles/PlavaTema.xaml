@@ -1,0 +1,210 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+
+    <!--data grid za proizvode-->
+
+    <Style x:Key="CustomDataGridStyle1" TargetType="DataGrid">
+        <Setter Property="Background" Value="#CFD0CF"/>
+        <Setter Property="RowBackground" Value="#C2CAC5"/>
+        <Setter Property="AlternatingRowBackground" Value="#EAF6E6"/>
+
+        <Setter Property="BorderBrush" Value="#DDDDDD"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="#DDDDDD"/>
+        <Setter Property="VerticalGridLinesBrush" Value="#DDDDDD"/>
+
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="AutoGenerateColumns" Value="True"/>
+
+        <!--RED-->
+        <Setter Property="RowStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource over}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+
+        <!--HEADER-->
+        <Setter Property="ColumnHeaderStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontWeight" Value="Medium" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+
+        <!--CELIJA-->
+        <Setter Property="CellStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridCell">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource over}"  />
+                            <Setter Property="BorderBrush" Value="{DynamicResource color1}" />
+                            <Setter Property="Foreground" Value="Black" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource over}"  />
+                            <Setter Property="BorderBrush" Value="{DynamicResource color1}" />
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="Foreground" Value="Black" />
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="Padding" Value="4,3,4,3"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="FontFamily" Value="Montserrat"/>
+                    <Setter Property="FontSize" Value="13"/>
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridCell">
+                                <Border Padding="{TemplateBinding Padding}" 
+                                        BorderBrush="{TemplateBinding BorderBrush}" 
+                                        BorderThickness="{TemplateBinding BorderThickness}" 
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FocusVisualStyle">
+                        <Setter.Value>
+                            <Style TargetType="Control">
+                                <Setter Property="BorderBrush" Value="Transparent" />
+                            </Style>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--boje ivice-->
+    <LinearGradientBrush x:Key="BigBorderBrush" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#003262" Offset="0"/>
+        <GradientStop Color="#0047AB" Offset="0.75"/>
+        <GradientStop Color="#2072AF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!--boje pozadine-->
+    <Color x:Key="primaryBackColor1">#274472</Color>
+    <Color x:Key="primaryBackColor2">#41729F</Color>
+    <Color x:Key="secondaryBackColor1">#0C2D48</Color>
+    <Color x:Key="secondaryBackColor2">#274472</Color>
+
+    <SolidColorBrush x:Key="color1" Color="#041B2E"/>
+    <SolidColorBrush x:Key="over" Color="#41729F"/>
+    <SolidColorBrush x:Key="textBox" Color="#07253E"/>
+
+    <!--menu button-->
+
+    <Style x:Key="menuButton" TargetType="RadioButton">
+
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Margin" Value="-5,0,0,5"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#7376BD"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderThickness="4,0,0,0"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Margin" Value="0,0,0,5"/>
+                <Setter Property="Background" Value="#5885AF"/>
+                <Setter Property="Foreground" Value="#BCBEE0"/>
+                <Setter Property="BorderBrush" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Margin" Value="0,0,0,5"/>
+                <Setter Property="Background" Value="#41729F"/>
+                <Setter Property="Foreground" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
+                <Setter Property="BorderBrush" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--dodaj radnika dugme koje se koristi za ostale dugmice-->
+
+    <Style x:Key="dodajRadnikaButton" TargetType="Button">
+        <Setter Property="Background" Value="#0C2D48"/>
+        <Setter Property="Foreground" Value=" White"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Width" Value="153"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Margin" Value="0,20,0,0"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="7">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#1C3D58"/>
+                <Setter Property="Foreground" Value="#ffffff"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+
+    <Style x:Key="controlButton1" TargetType="Button">
+
+        <Setter Property="Width" Value="35"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource plainTextColor3}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="4"
+                            >
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource color1}"/>
+                <Setter Property="Foreground" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

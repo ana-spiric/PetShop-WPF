@@ -1,0 +1,239 @@
+﻿<Window x:Class="Pet_Shop_HCI.views.IzmijeniProizvodView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pet_Shop_HCI.views" xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        mc:Ignorable="d"
+        Height="500" Width="500"
+        Background="Transparent"
+        AllowsTransparency="True" WindowStyle="None"
+        ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CornerRadius="7" />
+    </WindowChrome.WindowChrome>
+
+    <Border CornerRadius="7" BorderThickness="1" BorderBrush="{DynamicResource color1}"
+        Background="{DynamicResource newWindowColor}">
+
+        <Grid Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="38"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0">
+                <Button x:Name="btnClose"
+                                Style="{StaticResource controlButton1}"
+                                Tag="{StaticResource color4}"
+                                Click="btnClose_Click"
+                                Height="20">
+                    <fa:IconImage Icon="Xmark" Style="{StaticResource controlButtonIcon}"/>
+                </Button>
+            </StackPanel>
+
+            <TextBlock Text="Izmjena proizvoda"
+                       FontSize="16" FontWeight="Medium"
+                       Foreground="{DynamicResource color1}"
+                       FontFamily="Montserrat"
+                       HorizontalAlignment="Center" Margin="0,0,0,20" 
+                       Grid.Row="1"/>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+
+                    <StackPanel Margin="0,10">
+                        <TextBlock Text="Šifra:" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                        <Border BorderBrush="{DynamicResource textBox}" BorderThickness="1">
+                        <TextBlock x:Name="sifraTxt" Text="{Binding Sifra}"
+                             Width="200" Padding="5" VerticalAlignment="Center"
+                             Background="#F0F0F0"/>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,10">
+                        <TextBlock Text="Naziv:" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                        <TextBox x:Name="nazivTxt" Text="{Binding Naziv}"
+                              Style="{StaticResource TextBoxStyle}"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,10">
+                        <TextBlock Text="Stanje:" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                        <TextBox x:Name="stanjeTxt" Text="{Binding Stanje}"
+                              Style="{StaticResource TextBoxStyle}"
+                              PreviewTextInput="TextBox_PreviewTextInput"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,10">
+                        <TextBlock Text="Cijena (KM):" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                        <TextBox x:Name="cijenaTxt" Text="{Binding Cijena}"
+                             Style="{StaticResource TextBoxStyle}"
+                             PreviewTextInput="TextBox_PreviewTextDecimal"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,10">
+                        <TextBlock Text="Opis:" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                        <TextBox x:Name="opisTxt" Text="{Binding Opis}"
+                             Height="50"  Style="{StaticResource TextBoxStyle}" 
+                             TextWrapping="Wrap" 
+                             AcceptsReturn="True"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" x:Name="StackPanelOstalo" Visibility="Collapsed">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tip}" Value="Ostalo">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+
+                    <StackPanel Margin="0,10">
+                        <TextBlock Text="Vrsta:" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                        <TextBox x:Name="vrstaTxt" Text="{Binding Vrsta}"
+                             Height="50"  Style="{StaticResource TextBoxStyle}" 
+                             TextWrapping="Wrap" 
+                             AcceptsReturn="True"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,10">
+                        <TextBlock Text="Dodatni opis:" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                        <TextBox x:Name="dodatniOpisTxt" Text="{Binding DodatniOpis}"
+                             Height="50"  Style="{StaticResource TextBoxStyle}" 
+                             TextWrapping="Wrap" 
+                             AcceptsReturn="True"/>
+                    </StackPanel>
+                    
+                    <Button Content="Sačuvaj"
+                        Width="70" Height="30"
+                        Margin="0,20,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Style="{DynamicResource dodajRadnikaButton}"
+                        Click="ButtonSacuvajPromjene_Click" />
+                    
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" x:Name="StackPanelLjubimac" Visibility="Collapsed">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tip}" Value="Ostalo">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+
+                    <StackPanel Margin="0,10">
+                        <TextBlock Text="Vrsta životinje:" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                        <TextBox x:Name="vrstaZivotinjeTxt" Text="{Binding VrstaZivotinje}"
+                              Style="{StaticResource TextBoxStyle}"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,10">
+                        <TextBlock Text="Uzrast (mjesec):" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                        <TextBox x:Name="uzrastTxt" Text="{Binding Uzrast}"
+                              Style="{StaticResource TextBoxStyle}" />
+                    </StackPanel>
+
+                    <StackPanel Margin="0,10">
+                        <TextBlock Text="Težina (kg):" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                        <TextBox x:Name="tezinaTxt" Text="{Binding Tezina}"
+                              Style="{StaticResource TextBoxStyle}"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,10">
+                        <TextBlock Text="Rasa:" 
+                               Style="{StaticResource TextBlockStyle}"/>
+
+                        <TextBox x:Name="rasaTxt" Text="{Binding Rasa}"
+                              Style="{StaticResource TextBoxStyle}"/>
+                    </StackPanel>
+                    <Button Content="Sačuvaj"
+                        Width="70" Height="30"
+                        Margin="0,20,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Style="{DynamicResource dodajRadnikaButton}"
+                        Click="ButtonSacuvajPromjene_Click" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+
+    
+
+    <!-- <Grid>
+        <StackPanel>
+            <TextBox x:Name="sifraTxt" Text="{Binding Sifra}" Width="200" Margin="0,5,0,5"/>
+            <TextBox x:Name="nazivTxt" Text="{Binding Naziv}" Width="200" Margin="0,5,0,5" />
+            <TextBox x:Name="stanjeTxt" Text="{Binding Stanje}" Width="200" Margin="0,5,0,5" />
+            <TextBox x:Name="cijenaTxt" Text="{Binding Cijena}" Width="200" Margin="0,5,0,5" />
+            <TextBox x:Name="opisTxt"  Text="{Binding Opis}" Width="200" Margin="0,5,0,5" />
+
+            
+            <StackPanel x:Name="StackPanelOstalo" Visibility="Collapsed">
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Tip}" Value="Ostalo">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+
+                <TextBox x:Name="vrstaTxt"  Text="{Binding Vrsta}" Width="200" Margin="0,5,0,5" />
+                <TextBox x:Name="dodatniOpisTxt"  Text="{Binding DodatniOpis}" Width="200" Margin="0,5,0,5" />
+
+            </StackPanel>
+
+           
+            <StackPanel x:Name="StackPanelLjubimac" Visibility="Collapsed">
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Tip}" Value="Ostalo">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+
+                <TextBox x:Name="vrstaZivotinjeTxt"  Text="{Binding VrstaZivotinje}" Width="200" Margin="0,5,0,5" />
+                <TextBox x:Name="uzrastTxt"  Text="{Binding Uzrast}" Width="200" Margin="0,5,0,5" />
+                <TextBox x:Name="tezinaTxt"  Text="{Binding Tezina}" Width="200" Margin="0,5,0,5" />
+                <TextBox x:Name="rasaTxt"  Text="{Binding Rasa}" Width="200" Margin="0,5,0,5" />
+            </StackPanel>
+
+            <Button Content="Sačuvaj Promjene" Width="150" Margin="0,20,0,0" Click="ButtonSacuvajPromjene_Click"/>
+        </StackPanel>
+    </Grid> -->
+</Window>
